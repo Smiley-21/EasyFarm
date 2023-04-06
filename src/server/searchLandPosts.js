@@ -1,10 +1,6 @@
-const config = require('./configure')
+
 var land = require('./land.schema')
 var mongoose = require('mongoose')
-
-mongoose.connect(config.cloudurl, { useNewUrlParser: true }).then(
-        () => { console.log("connection successfull") }).
-        catch(err => console.log('could not connect to mongo', err));
 
 exports.getAllPosts = (req, res) => {
 

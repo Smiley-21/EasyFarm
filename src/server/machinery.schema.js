@@ -7,6 +7,12 @@ exports.Machine = mongoose.model('machine-post', {
     image: Buffer,
     year: String,
     name: String,
-    user_name: String
+    user_name: String,
+    owner:String,
+    address:String,
+    image_machine:Buffer,
+    phone:String,
+
+
 });
 

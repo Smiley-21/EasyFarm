@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abhishek1998/farmer_marketplace.git"
   },
   "keywords": [],
   "author": "Pakalapati, Surya Narayana, Abhishek Raturi,Rahul Raman, Palak Arora, Kharva Dhruvika ,Shandilya Shivangi,Keshav Arshdeep, Mistry, Apexa Kiritbhai ",
@@ -23,6 +19,7 @@
     "bootstrap": "^4.5.3",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.5",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
@@ -32,7 +29,8 @@
     "mongodb": "*",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.4",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "paypal-rest-sdk": "^1.8.1",

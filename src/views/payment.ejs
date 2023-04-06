@@ -6,7 +6,7 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Paypal Payment</title>
+  <title>Book Now</title>
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Lato&family=Nunito:wght@300&display=swap");
@@ -53,7 +53,7 @@
 
     .btn-primary {
       color: #fff !important;
-      background-color: #f14b28 !important;
+      background-color: #57b2ce !important;
       border: none !important;
     }
 
@@ -173,7 +173,7 @@
       color: #ef476f;
     }
 
-    /*# sourceMappingURL=style.css.map */
+    /* sourceMappingURL=style.css.map */
   </style>
 
 </head>
@@ -192,19 +192,22 @@
                       <img src="img/pro1.jpg" alt="" width="300px">
                     </div>
                     <div class="title">
+                      <%= console.log(postData)%>
                       <label><%= postData.title %></label>
                       <label><%= postType %></label>
-                      <div class="buttons">
+                      <!-- <div class="buttons">
                         <button type="submit"><i class="fas fa-chevron-up"></i> </button>
                         <input type="text" class="font-title" value="1">
                         <button type="submit"><i class="fas fa-chevron-down"></i> </button>
-                      </div>
-                      <button type="submit" name="save" value="save" class="btn btn-primary">Save for later</button>
+                      </div> -->
+                      <div>
+                        <button type="submit" name="save" value="save" class="btn btn-primary">Save for later</button>
                       <button type="submit" name="save" value="save" class="btn btn-danger">Delete</button>
+                      </div>
                     </div>
                   </div>
                   <div class="price">
-                    <h4 class="text-red"><%=postData.rent.$numberDecimal%></h4>
+                    <h4 class="text-red"> ₨<%=postData.rent.$numberDecimal%>/day</h4>
                   </div>
                 </div>
               </div>
@@ -227,7 +230,10 @@
                       <span class="text-red font-title"><%=postData.rent.$numberDecimal%></span>
                     </li>
                   </ul>
-                  <div id="paypal-payment-button">
+                  <!-- <div id="paypal-payment-button"> -->
+                    <form action="/bookingconfirm" method="post">
+                      <button type="submit" name="booknow" value="booknow" class="btn btn-success" id="book">Book Now</button>
+                    </form>
 
                   </div>
                 </div>
@@ -240,7 +246,7 @@
   </div>
   <script
     src="https://www.paypal.com/sdk/js?client-id=ATqJoT8uledW83BN2RvdA4o9tptMnGw4EUVlV1na6YHhKgqXEHcJXE8t0EZLGsDr4mybfMJ5nXxL10vQ&disable-funding=credit,card"></script>
-  <script src="index.js"></script>
+  
   <script>paypal.Buttons({
       style: {
         color: 'blue',
@@ -264,7 +270,13 @@
       onCancel: function (data) {
         window.location.href = "/cancel"
       }
-    }).render('#paypal-payment-button');</script>
+    }).render('#paypal-payment-button');
+    const bookNowButton = document.getElementById('booknow-button');
+  bookNowButton.addEventListener('click', function(event) {
+    // Perform your action here
+  });
+    
+    </script>
 </body>
 </body>
 

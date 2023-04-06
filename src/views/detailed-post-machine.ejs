@@ -8,25 +8,32 @@
             <div class="formInContainer">
                 <div class="outerDetailContainer">
                     <div class="imageContainer">
-                        <img src="/img/logo.png" style="width: 250px; height: 250px;">
+                        <img src="/img/logo2.png" style="width: 250px; height: 250px;">
                     </div>
                     <div class="postDetailsContainer">
                         <label>
-                            <h4>Detailed Post</h4>
+                            <h4>Details of Machine</h4>
                         </label>
                         <div>
-                            <label>Post Title:</label> <span class="detailText"> <%= postData.title %> </span>
+                            <label> Machine Name:</label> <span class="detailText"> <%= postData.title %> </span>
                         </div>
                         <label>Model Year:</label><span class="detailText"><%= postData.year %></span></br>
                         <label>Model Name:</label><span class="detailText"><%= postData.name %></span></br>
                         <label>Price:</label><span class="detailText"><%= postData.rent %></span></br>
+                        <label>Owner:</label><span class="detailText"><%= postData.owner %></span></br>
+                        <label>Address:</label><span class="detailText"><%= postData.address %></span></br>
+                        <label>Phone:</label><span class="detailText"><%= postData.phone %></span></br>
+
                         <label>Description:</label><span
                             class="detailText descriptionText"><%= postData.description %></span></br>
                     </div>
                 </div>
                 <div class="buttonContainer">
-                    <a class="btn btn-large btn-primary" href="/directChat">Direct Chat</a>
-                    <a class="btn btn-large btn-primary" href="/payment">Checkout</a>
+                    
+                    <form action="/payment" method="get">
+                        <a class="btn btn-large btn-info" href="<%=whatsapp%>" target="_blank">Direct Chat</a>
+                        <a class="btn btn-large btn-success" href="/payment">Book Now</a>
+                    </form>
                 </div>
             </div>
         </div>

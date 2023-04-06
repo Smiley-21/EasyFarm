@@ -1,12 +1,9 @@
-let config = require('./configure')
+
 let land = require('./land.schema')
 let mongoose = require('mongoose');
 const { ObjectID } = require('mongodb');
 
-mongoose.connect(config.cloudurl, { useNewUrlParser: true }).then(
-    () => {
-        console.log("connection successfull")
-    }).catch(err => console.log('could not connect to mongo', err));
+
 
 exports.create = (req, res) => {
     console.log(req.body)

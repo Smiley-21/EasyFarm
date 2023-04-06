@@ -3,7 +3,7 @@
 	margin-bottom: 15px !important;
 }
 .navigationContainer .bg-dark{
-	background-color: #f14b28 !important;
+	background-color:#51892a !important;
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -20,7 +20,7 @@
 	border-radius: 0px 3px 3px 0px;
 }
 .sliderImageContainer{
-	height: 200px;
+	height: 400px;
 	width: 100%;
 	overflow: hidden;
 }
@@ -58,8 +58,9 @@ li .footerText{
 	margin-bottom: 0px !important;
 	color: #ffff !important;
 	font-size: 13px !important;
-	background-color: #f14b28 !important;
+	background-color: #51892a!important;
 	position: fixed;
 	 left: 0;
   bottom: 0;
   width: 100%;
+}

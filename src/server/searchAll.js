@@ -1,11 +1,12 @@
-const config = require('./configure')
+
 var land = require('./land.schema')
 var machine = require('./machinery.schema')
 var mongoose = require('mongoose')
 
-mongoose.connect(config.cloudurl, { useNewUrlParser: true }).then(
-        () => { console.log("connection successfull") }).
-        catch(err => console.log('could not connect to mongo', err));
+// mongoose.connect(config.cloudurl, { useNewUrlParser: true,useUnifiedTopology:true }).then(
+//         () => {
+//             console.log('started to log searchAll')
+//         }).catch(err => console.log('could not connect to mongo', err));
 
 exports.getAllPosts = (req, res) => {
         var title = req.body.title;

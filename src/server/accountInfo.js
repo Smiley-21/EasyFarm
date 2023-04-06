@@ -1,4 +1,4 @@
-let config = require('./configure')
+
 let user = require('./user.schema')
 let mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
@@ -7,10 +7,7 @@ const { json } = require('body-parser');
 var currentUSer = { id: '', body: {} };
 var session = require('express-session')
 
-mongoose.connect(config.cloudurl, { useNewUrlParser: true }).then(
-    () => {
-        console.log("connection successfull")
-    }).catch(err => console.log('could not connect to mongo', err));
+
 
 exports.create = (req, res) => {
     console.log(req.body)
@@ -37,10 +34,11 @@ exports.create = (req, res) => {
 exports.showinfo = (req, res) => {
     console.log("showinfo")
     if(!req.session.user){res.redirect("/login")}
-    user.User.findById(ObjectId(req.session.user._id), (err, result) => {
+    user.User.findById(new ObjectId(req.session.user._id), (err, result) => {
         if (err) {
             console.log("error fetching the post ", err)
         } else {
+            console.log(req.session.user);
             Land.find({ user_name: "abhishek" }, (err, allPosts) => {
                 console.log('Session ID: ' + req.session.user._id)
                 console.log("posts " + result)
@@ -67,7 +65,7 @@ exports.edit = (req, res) => {
     if (!currId) { currId = currentUSer.id }
     console.log("_id : ", currId)
     console.log("Edit User: ", req.body.name)
-    user.User.findByIdAndUpdate(ObjectId(currId), req.body, (err, result) => {
+    user.User.findByIdAndUpdate( new ObjectId(currId), req.body, (err, result) => {
         if (err) {
             console.log("error fetching the post ", err)
         } else {
