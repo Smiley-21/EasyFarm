@@ -1,0 +1,35 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 4px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    line-height: 1.5;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    background-color: #0047ab;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  
+  .button:hover {
+    background-color: #005ad9;
+  }
+  

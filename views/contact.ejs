@@ -1,0 +1,45 @@
+<%- include ('partials/header') %>
+         <!-- end header inner -->
+         <div class="contact">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12 ">
+                     <div class="titlepage text_align_center">
+                        <span>Our Contact</span>
+                        <h2>Request A Call Back</h2>
+                     </div>
+                  </div>
+                  <div class="col-md-8 offset-md-2">
+                     <form id="request" class="main_form" method="post" action="/submitcontact">
+                        <div class="row">
+                           <div class="col-md-12 ">
+                              <input class="form_control" placeholder="Your Name" type="text" name=" name" required> 
+                           </div>
+                           <div class="col-md-12">
+                              <input class="form_control" placeholder="Phone Number" type="text" name="phone" required>                          
+                           </div>
+                          
+                           <div class="col-md-12">
+                              <input type="email" name="email" placeholder="Email Address" id="" class="form_control" required>
+                           </div>
+                           <div class="col-md-12">
+                              <input class="textarea" placeholder="Message" type="type" name="message" required> 
+                           </div>
+                           <div class="col-md-12">
+                              <div class="group_btn">
+                              <button class="send_btn" type="submit" >Send</button>
+                              
+                            </div>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+             <div class="map-responsive">
+               <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Shiv+Nadar+University+Noida" width="600" height="430" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+            </div>
+         </div>
+      <!-- end contact -->
+      <!--  footer -->
+      <%- include ('partials/footer') %>
