@@ -8,12 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Pakalapati, Surya Narayana, Abhishek Raturi,Rahul Raman, Palak Arora, Kharva Dhruvika ,Shandilya Shivangi,Keshav Arshdeep, Mistry, Apexa Kiritbhai ",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abhishek1998/farmer_marketplace/issues"
-  },
-  "homepage": "https://github.com/abhishek1998/farmer_marketplace#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.3",
@@ -25,10 +19,12 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
+    "fs": "^0.0.1-security",
     "method-override": "^3.0.0",
     "mongodb": "*",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
     "passport": "^0.4.1",

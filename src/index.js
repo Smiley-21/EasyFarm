@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const nodemailer=require("nodemailer");
 const dotenv=require('dotenv');
+const multer=require('multer');
+
 
 dotenv.config();
 
@@ -13,7 +15,13 @@ const mongoose = require("mongoose");
 
 mongoose.connect(
     process.env.cloudurl,
-    { useNewUrlParser: true ,useUnifiedTopology:true}
+    { useNewUrlParser: true ,
+      useUnifiedTopology:true,
+      useFindAndModify:true,
+      useCreateIndex:true,
+      autoIndex:true,
+    
+    }
   )
   .then(() => console.log("MongodDb Connected Successfully"))
   .catch(err=>console.log("Error in connecting to MongoDB ",err));
@@ -29,13 +37,15 @@ const getMsg = require("./server/getAllMessages");
 const { url } = require("inspector");
 const auth = require("./server/auth");
 const searchAll = require("./server/searchAll");
+const validateUser=require('./server/ValidateUser');
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var urlencodedParser = bodyParser.urlencoded({ extended: true });
 
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(__dirname + "/public"));
-app.set("view engine", "html");
-app.engine("html", require("ejs").renderFile);
+
+
 app.use(logger("dev"));
 
 app.use(
@@ -54,15 +64,13 @@ app.get("/", (req, resp) => {
 app.get("/land", urlencodedParser, searchLandPosts.getAllPosts);
 
 app.get("/machine", urlencodedParser, searchMachinePosts.getAllPosts);
-// const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
-// app.get('/machine', ensureLoggedIn('/login'), urlencodedParser, searchMachinePosts.getAllPosts);
 
 
 app.get("/getAllMessages", urlencodedParser, getMsg.getAllMessages);
 
-app.get("/addAsset", (req, resp) => {
-  resp.render("add-asset-form.ejs");
+app.get("/addAsset", (req, res) => {
+  res.render("add-asset-form.ejs");
 });
 
 app.get("/profile/:username", (req, res) => {
@@ -71,8 +79,46 @@ app.get("/profile/:username", (req, res) => {
 
 app.get("/getAllMessages", urlencodedParser, getMsg.getAllMessages);
 
+// const Storageconfig=multer.diskStorage({
+//   destination:path.join(__dirname,'/public/image'),
+//   filename:(req,file,cb)=>{
+//     cb(null,file.originalname)
+//   }
+// });
 
-app.post("/addMachine", urlencodedParser, machineryController.create);
+const Storageconfig=multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null,"src/public");
+  },
+  filename:(req,file,cb)=>{
+    const ext=file.mimetype.split("/")[1];
+    cb(null,`image/admin-${file.originalname}-${Date.now()}.${ext}`);
+    // cb(null,`image/${file.originalname}`);
+  }
+});
+
+const multerFilter=(req,file,cb)=>{
+  if(file.mimetype.split("/")[1]=="jpeg" || file.mimetype.split("/")[1]==="png")
+  cb(null,true);
+  else{
+    cb(new Error("Not a jpeg/png file!! "), false);
+  }
+}
+
+const upload=multer({
+  storage:Storageconfig,
+  fileFilter:multerFilter,
+});
+app.post("/addMachine", urlencodedParser,upload.single('imageinsert'), (req,res,next)=>{
+  if(!req.file)
+  {
+    const error=new Error("Please upload a file");
+    error.status=400;
+    return next(error);
+  }
+  console.log(req.file);
+  machineryController.create(req,res);
+});
 
 app.post("/addLand", urlencodedParser, landController.create);
 

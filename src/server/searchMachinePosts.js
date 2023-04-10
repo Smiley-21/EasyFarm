@@ -20,7 +20,11 @@ exports.getAllPosts = (req, res) => {
 exports.getPosts = (req, res) => {
         var provinceRadios = req.body.provinceSelect;
         var priceRadios = req.body.priceRadios;
+        var startprice=req.body.startprice;
+        var lastprice=req.body.lastprice;
         console.log("priceRadios ", priceRadios)
+        console.log(startprice);
+        console.log(lastprice);
 
         var title = req.body.title;
         if (!title) {
@@ -47,6 +51,11 @@ exports.getPosts = (req, res) => {
         else if (priceRadios == '4') {
                 lowrent = 1000.0;
                 highrent = 100000000.0;
+        }
+        else if(startprice!==null && lastprice!==null && lastprice>=startprice)
+        {
+                lowrent=startprice;
+                highrent=lastprice;
         }
         else {
                 lowrent = 0.0;

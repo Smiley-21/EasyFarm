@@ -5,10 +5,7 @@ const { ObjectId } = require('mongodb');
 const { json } = require('body-parser');
 
 
-// mongoose.connect(config.cloudurl, { useNewUrlParser: true,useUnifiedTopology:true }).then(
-//     () => {
-//         console.log('started to log auth')
-//     }).catch(err => console.log('could not connect to mongo', err));
+
 
 
 exports.login =  async(req, res) => {
