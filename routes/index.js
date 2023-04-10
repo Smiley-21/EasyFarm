@@ -133,6 +133,7 @@ router.post('/submitcontact', (req,res)=>{
 router.post('/newsletter', (req,res)=>{
     // console.log("Newsletter subscribed");
     console.log(req.body.Email);
+    
     res.render('newsletterconfirm');
 })
 
